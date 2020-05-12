@@ -21,20 +21,19 @@ It can be deployed as an HCP application, but can also be adapted to run elsewhe
 `username & password`
 
 5. Check the Thresholds being used under the additional properties of the destination.
-
-6. Whenever you change such settings you need to restart the application
+Whenever you change such settings you need to restart the application
 
 `CPULoad & BusyThreads`
 
-7. Change to the project's root folder
+6. Change to the project's root folder
 
 `cd <project-folder>`
 
-8. Use Maven to build it.
+7. Use Maven to build it.
 
 `mvn clean install -DskipTests`
 
-9. Deploy the WAR file on your HCP account.
+8. Deploy the WAR file on your HCP account.
 
 `neo deploy --runtime neo-java-web --runtime-version 3.104 --java-version 8 --account <accountID> --application <appName> --host <us1|us2|us3>.hana.ondemand.com --user <userID> --source ./target/neo-autoscaler-0.0.1-SNAPSHOT.war`
 
