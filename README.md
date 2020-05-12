@@ -35,8 +35,9 @@ Whenever you change such settings you need to restart the application
 
 8. Deploy the WAR file on your HCP account.
 
-`neo deploy --runtime neo-java-web --runtime-version 3.104 --java-version 8 --account <accountID> --application <appName> --host <us1|us2|us3>.hana.ondemand.com --user <userID> --source ./target/neo-autoscaler-0.0.1-SNAPSHOT.war`
+`neo deploy --minimum-processes 1 --maximum-processes 3 --runtime neo-java-web --runtime-version 3.104 --java-version 8 --account <accountID> --application <appName> --host <us1|us2|us3>.hana.ondemand.com --user <userID> --source ./target/neo-autoscaler-0.0.1-SNAPSHOT.war`
 
+NOTE: You could also do the same via deploy button on the cockpit.
 
 ### Usage ###
 
