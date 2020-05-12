@@ -1,8 +1,3 @@
-![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
-
-# Important Notice
-We have decided to stop the maintenance of this public GitHub repository.
-
 ## HCP Automatic Application Scaler ##
 
 This is an example application that demonstrates how elastic horizontal scaling can be achieved on the SAP HANA Cloud platform using the platform-provided APIs for [Lifecycle Management](https://api.hana.ondemand.com/lifecycle/v1/documentation) and [Monitoring](https://api.hana.ondemand.com/monitoring/v1/documentation).
@@ -11,16 +6,26 @@ It can be deployed as an HCP application, but can also be adapted to run elsewhe
 
 ### Quick Start ###
 
-First, clone the repo `git clone https://github.com/SAP/cloud-autoscaler`.
+First, clone the repo `git clone https://github.com/ivanmir/cloud-autoscaler`.
+Import the destinations into your account. On you CLoud Cockpit, open the menu Destinations under Conectivity
+Click on the import button and then select the file platform_api.properties from:
+`/src/main/resources/destinations`
+While importing it, enter your credentials
+`username & password`
+Check the Thresholds being used under the additional properties of the destination.
+Whenever you change such settings you need to restart the application
+`CPULoad & BusyThreads`
+Change to the project's root folder
+`cd <project-folder>`
 Use Maven to build it.
+`mvn clean install -DskipTests`
 Deploy the WAR file on your HCP account.
-
-> Please be mindful that the scaler uses two APIs provided by HCP, therefore two destinations should be created, named **hcprestapi** and **hcpmonitoringapi**. You can simply import the destinations we provide [here](https://github.com/SAP/cloud-autoscaler/blob/master/src/main/resources/destinations/hcprestapi.destination) and [here](https://github.com/SAP/cloud-autoscaler/blob/master/src/main/resources/destinations/hcpmonitoringapi.destination), just add your user name and password.
+`neo deploy --runtime neo-java-web --runtime-version 3.104 --java-version 8 --account <accountID> --application <appName> --host <us1|us2|us3>.hana.ondemand.com --user <userID> --source ./target/neo-autoscaler-0.0.1-SNAPSHOT.war`
 
 
 ### Usage ###
 
-After starting the application, point your browser to `https://<your app base url>/appscaler`.
+After starting the application, point your browser to `https://<your app base url>/neo-autoscaler-0.0.1-SNAPSHOT/`.
 
 In the UI form that shows up, enter the details of the application you wish to monitor (account and application name). 
 
@@ -60,6 +65,10 @@ Licensed under MIT - https://github.com/jquery/jquery/blob/master/MIT-LICENSE.tx
 Twitter Bootstrap (http://twitter.github.com/bootstrap/)
 Licensed under Apache License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0
 
-json.org (json.org)
-Licensed under json.org License (http://www.json.org/license.html)
+Gson (https://github.com/google/gson)
+Licensed under Apache License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0
+
+Spring Boot (https://spring.io/projects/spring-boot)
+Licensed under Apache License, Version 2.0 - http://www.apache.org/licenses/LICENSE-2.0
+
 
